@@ -1,0 +1,82 @@
+:root{--brand-color: #0B0C10;
+  --background-color: #07080a;
+  --text-color: white;
+  --head-color: #66FCF1;
+  --button-color: #66FCF1;
+}
+body {
+  background-image: url("atMgmtLoginBackground.png");
+  background-size: cover;
+  font-family: andale mono, monospace;
+  background-color: var(--background-color); 
+  color: var(--text-color);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  place-items: center;
+}
+.header{
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 50px;
+  color: var(--head-color);
+}
+.loginBox{
+  width: 450px;
+  height: 600px;
+  /* flex:1;
+   max-width: 450px; */
+  background-color: var(--brand-color);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+  border-radius: 10px;
+}
+
+.loginBox p{
+  margin: 0;
+  margin-top: 40px;
+  padding: 0;
+  font-size: 20px;
+}
+
+.loginBox input{
+  width: 100%;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.loginBox input[type="text"],input[type="password"]{
+  border: none;
+  border-bottom: 1px solid#fff;
+  background: transparent;
+  outline:none;
+  height: 40px;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.loginBox input[type="submit"]{
+  border-color: var(--button-color);
+  border-width: 2px;
+  outline: none;
+  height: 40px;
+  background: var(--brand-color);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 2px;
+}
+
+.loginBox input[type="submit"]:hover{
+  cursor: pointer;
+  background-color: var(--button-color);
+}
+
+.loginErrorMessage{
+  color:red;
+}
+

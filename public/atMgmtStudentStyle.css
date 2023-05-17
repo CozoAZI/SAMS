@@ -1,0 +1,191 @@
+:root{--brand-color: #0B0C10;
+  --background-color: #07080a;
+  --text-color: white;
+  --head-color: #66FCF1;
+  --button-color: #66FCF1;
+  --bright-color: #F27D42;
+}
+
+@keyframes background-pan {
+  from{
+    background-position: 0% center;
+  }
+
+  to{
+    background-position: -200% center;
+  }
+}
+body {
+  animation: background-pan 10s linear infinite;
+  background: linear-gradient(to right, cyan,var(--brand-color),cyan);
+  background-size: 200%;
+  font-family: andale mono, monospace;
+  background-color: var(--background-color); 
+  color: var(--text-color);
+  margin: 0;
+  place-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.studentInfo{
+  background:linear-gradient(to right, black, var(--brand-color));
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 10%;
+  font-size: 32px;
+  text-align: center;
+  font-family: andale, monospace;
+  margin-right: 1px;
+  opacity: 90%;
+}
+.name{
+  font-weight: bold;
+}
+
+.rollno{
+  font-size: 20px;
+}
+
+h1{
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 50px;
+  font-family: andale,monospace;
+  color: var(--head-color);
+}
+
+.mainPage{
+  padding: 20px;
+  background-color: var(--brand-color);
+  box-sizing: border-box;
+  width: 800px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.attendanceReport{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow:scroll;
+}
+.shortAtt{
+  display: flex;
+  margin: 7px;
+  border: 2px solid rgb(46, 46, 46);
+  border-radius: 10px;
+  box-shadow: 0 0px 0px 0 var(--button-color),  0 1px 1px 0 var(--button-color);
+  transition: box-shadow 0.3s ease-in-out;
+  cursor:context-menu;
+}
+
+.shortAtt:hover{
+  box-shadow: 0 4px 4px 0 var(--button-color), 0 7px 15px 0 var(--button-color);
+}
+
+.smallBox{
+  height: 100%;
+  width: 100%;
+  font-family:andale, monospace;
+  background-color: var(--brand-color);
+  height: 70px;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 20;
+  border: 1px solid black;
+}
+
+.smallBox:hover{
+  color: var(--button-color);
+}
+button{
+  background:none;
+  color: white;
+  font-family: andale, monospace;
+  font-size: 16px;
+  font-style:oblique;
+  height: 100%;
+  width: 100%;
+  border:none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(var(--brand-color), var(--brand-color) 50%, var(--button-color) 50%, var(--button-color));
+  background-size: 100% 200%;
+  transition: background 0.5s;
+}
+
+button:hover{
+  font-size: 22px;
+  font-weight: bolder;
+  color: black;
+  font-family: andale, monospace;
+  height: 100%;
+  width: 100%;
+  border:none;
+  background-position: 100% 100%;
+}
+
+.detailedAtt{
+  background: var(--brand-color);
+  margin-left: 1px;
+  height: 100%;
+  width: 50%;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.courseName{
+  color: var(--button-color);
+  font-size: 32px;
+  padding-bottom: 50px;
+}
+
+table,th,td{
+  border: 1px solid var(--button-color);
+  border-radius: 10px;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 20px;
+}
+
+table{
+  width: 95%;
+}
+
+.courseName{
+  padding-top: 30px;
+}
+
+::-webkit-scrollbar {
+width: 8px;
+height: 8px;
+}
+
+::-webkit-scrollbar-track {
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: rgb(48, 48, 48);
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-corner{
+background: none;
+}

@@ -1,0 +1,77 @@
+:root{--brand-color: #0B0C10;
+  --background-color: #07080a;
+  --text-color: white;
+  --head-color: #66FCF1;
+  --button-color: #66FCF1;
+  --bright-color: #F27D42;
+}
+
+body {
+  padding-top: 40px;
+  background-size: cover;
+  font-family: andale mono, monospace;
+  background-color: var(--background-color); 
+  background-image: url("adminBackgroundImage.png");
+  color: var(--text-color);
+  margin: 0;
+  place-items: center;
+}
+
+.header{
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 50px;
+  color: var(--head-color);
+}
+
+.mainPage{
+  background-color: var(--brand-color);
+  border: 1px solid var(--button-color);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+  display:grid;
+  place-items: center;
+  grid-template-areas: 
+  "CI S1"
+  "S2  UI";
+  grid-template-columns: 2fr 2fr;
+}
+
+CourseInfo{ grid-area: CI;}
+AddStu  { grid-area: S1;}
+Space2  { grid-area: S2;}
+UserInfo  { grid-area: UI;}
+
+a{
+  text-decoration: none;
+}
+.smolBox{
+  cursor: pointer;
+  height: 200px;
+  width: 250px;
+  margin: 10px;
+  position: relative;
+  font-family: andale mono, monospace;
+  background: var(--brand-color);
+  color: #fff;
+  font-size: 30px;
+  display: flex;
+  border: 1px solid var(--button-color);
+  border-radius: 7px;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.smolBox p{
+  font-size: 15px;
+}
+
+.smolBox:hover{
+  box-shadow: 0 6px 10px 0 var(--button-color), 0 10px 25px 0 var(--button-color);
+}

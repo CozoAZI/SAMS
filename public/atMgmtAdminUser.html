@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>AMS Add User Info</title>
+            <link rel="stylesheet" type="text/css" href="atMgmtAdminUser.css">
+        <div class="topnav">
+            <div><a href="atMgmtAdmin.html">Home</a></div>
+            <div><a href="atMgmtAdminCourse.html">Course Info</a></div>
+            <div><a class="active" href="atMgmtAdminUser.html">User Info</a></div>
+            <div><a href="atMgmtAdminAddStudentsToCourse.html">+Students</a></div>
+            <div><a href="atMgmtAdminEditPassword.html">Edit Users</a></div>
+        </div>
+        <body>
+            <div class="mainBox">
+                <h1 class="header">ADD USER INFO</h1>
+                <form id="courseForm">
+                    <p>User id:</p>
+                    <input type="text" id="user_id" placeholder="XXXXXXXX">
+                    <p>User Name:</p>
+                    <input type="text" id="user_name" placeholder="Course Name">
+                    <p>Password:</p>
+                    <input type="text" id="password" placeholder="Password">
+                    <p>Designation:</p>
+                    <input type="text" id="designation" placeholder="Designation">
+                    <p>Year of Joining:</p>
+                    <input type="text" id="year" placeholder="XXXX">
+                    <p>Branch:</p>
+                    <input type="text" id="branch" placeholder="Branch">
+                    <input type="submit" id="submitLogin" value="Submit">
+                </form>
+                <div class="loginErrorMessage" id = "lEM"></div>
+            </div>
+            <script src="atMgmtAdminUser.js"></script>
+        </body>
+    </head>
+</html>

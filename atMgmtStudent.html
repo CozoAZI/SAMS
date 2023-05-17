@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>AMS Student Window</title>
+            <link rel="stylesheet" type="text/css" href="atMgmtStudentStyle.css">
+       
+        <body>
+            <div class="studentInfo">
+                <div class = "name" id="nameBox"></div>
+                <div class = "rollNo" id="rollNoBox"></div>
+            </div>
+            <div class="mainPage">
+                <div class = "attendanceReport" id = "attendanceReport">
+                    <h1>Attendance Report</h1>
+                </div>
+            </div>
+            <div class = "detailedAtt">
+                <div class="courseName" id="courseName">Software Engineering</div>
+                <div class="attTable" id="attTable">
+                    <table>
+                      </table>
+                </div>
+            </div>
+            <script src="atMgmtStudentScript.js"></script>
+            <script>document.addEventListener("DOMContentLoaded", async function() {
+                try {
+                  await fetchData();
+                } catch (error) {
+                  console.log('Error:', error);
+                }
+              });</script>
+        </body>
+    </head>
+</html>

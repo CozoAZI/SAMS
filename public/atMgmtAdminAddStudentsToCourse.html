@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>AMS Add User Info</title>
+            <link rel="stylesheet" type="text/css" href="atMgmtAdminAddStudentsToCourseStyle.css">
+        <div class="topnav">
+            <div><a href="atMgmtAdmin.html">Home</a></div>
+            <div><a href="atMgmtAdminCourse.html">Course Info</a></div>
+            <div><a href="atMgmtAdminUser.html">User Info</a></div>
+            <div><a class="active" href="atMgmtAdminAddStudentsToCourse.html">+Students</a></div>
+            <div><a href="atMgmtAdminEditPassword.html">Edit Users</a></div>
+        </div>
+        <body>
+            <div class="mainBox">
+                <h1 class="header">ADD STUDENTS</h1>
+                <form id="addStudents">
+                    <select id="courseNamesDropDown" class="dropdown">
+                        <option disabled selected value>--Course Code--</option>    
+                    </select>
+                    <br>
+                    <div class="studentBox" id="studentBox">
+                    </div>
+                    <input type="submit">submit</input>
+                </form>
+            </div>
+            <script src="atMgmtAdminAddStudentsToCourseScript.js"></script>
+        </body>
+    </head>
+</html>

@@ -1,0 +1,45 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Dropdown</title>
+</head>
+<body>
+  <div id="dropdown-container"></div>
+
+  <script>
+    // Fetch the options from the server
+    fetch('/')
+      .then(response => response.text())
+      .then(html => {
+        // Inject the HTML into the page
+        const container = document.querySelector('#dropdown-container');
+        container.innerHTML = html;
+
+        // Log the selected option when the form is submitted
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          const selectedOption = document.querySelector('#dropdown').value;
+          console.log(`Selected option: ${selectedOption}`);
+        });
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
+</html> -->
+<div id="dropdown-container"></div>
+
+<script>
+  // Fetch the options from the server
+  fetch('/')
+    .then(response => response.text())
+    .then(html => {
+      // Inject the HTML into the page
+      const container = document.querySelector('#dropdown-container');
+      container.innerHTML = html;
+
+      // ...
+    })
+    .catch(error => console.error(error));
+</script>

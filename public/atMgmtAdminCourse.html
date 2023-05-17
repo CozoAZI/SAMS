@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>AMS Add User Info</title>
+            <link rel="stylesheet" type="text/css" href="atMgmtAdminCourseStyle.css">
+        <div class="topnav">
+            <div><a href="atMgmtAdmin.html">Home</a></div>
+            <div><a class="active" href="atMgmtAdminCourse.html">Course Info</a></div>
+            <div><a href="atMgmtAdminUser.html">User Info</a></div>
+            <div><a href="atMgmtAdminAddStudentsToCourse.html">+Students</a></div>
+            <div><a href="atMgmtAdminEditUser.html">Edit Users</a></div>
+        </div>
+        <body>
+            <div class="mainBox">
+                <h1 class="header">ADD COURSE INFO</h1>
+                <form id="courseForm">
+                    <p>Course Code:</p>
+                    <input type="text" id="courseCode" placeholder="XX000">
+                    <p>Course Name:</p>
+                    <input type="text" id="courseName" placeholder="Course Name">
+                    <p>Faculty:</p>
+                    <select class="dropdown" name="faculty" id="faculty">
+                    </select>
+                    <input type="submit" id="submitLogin" value="Submit">
+                </form>
+                <div class="loginErrorMessage" id = "lEM"></div>
+            </div>
+            <script src="atMgmtAdminCourseScript.js"></script>
+        </body>
+    </head>
+</html>
