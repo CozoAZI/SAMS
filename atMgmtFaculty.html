@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class = "detailedAtt" id = "detailedAtt">
-                <div class="courseName" id="courseName">Software Engineering</div>
+                <div class="courseName" id="courseName"></div>
                 <div class="attTable" id="attTable">
                     <table id="selectedTable">
                       </table>
@@ -27,12 +27,12 @@
             </div>
             <script src="atMgmtFacultyScript.js"></script>
             <script>document.addEventListener("DOMContentLoaded", async function() {
-              try {
-                await fetchData();
-              } catch (error) {
-                console.log('Error:', error);
-              }
-            });</script>
+                try {
+                  await fetchData();
+                } catch (error) {
+                  console.log('Error:', error);
+                }
+              });</script>
         </body>
     </head>
 </html>
