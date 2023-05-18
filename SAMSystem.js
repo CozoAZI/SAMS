@@ -15,6 +15,27 @@ app.listen(3000);
 app.get('/' , (req,res)=>{
     res.sendFile('atMgmtLogin.html',{root:__dirname})
 });
+app.post('/login',async (req,res)=>
+{
+    const {user_id,password}=req.body;
+const credential=await User_info.findOne({user_id,password})
+if(credential)
+{res.send('true')}
+else
+{
+    res.send('false') 
+}
+}
+);
+app.get('/Admin',(req,res)=>{
+  console.log('Admin')
+res.sendFile('atMgmtAdmin.html',{root:__dirname})})
+app.get('/Faculty',(req,res)=>{
+console.log('Admin')
+res.sendFile('atMgmtFaculty.html',{root:__dirname})})
+app.get('/Student',(req,res)=>{
+console.log('Student')
+res.sendFile('/atMgmtStudent.html',{root:__dirname})})
 app.post('/enter_course_info',async(req,res)=>
 {
     try {
@@ -86,18 +107,7 @@ User_info.find()
 .then((result)=>res.send(result))
 .catch(()=>res.send('not found'))
 );
-app.post('/login',async (req,res)=>
-{
-    const {user_id,password}=req.body;
-const credential=await User_info.findOne({user_id,password})
-if(credential)
-{res.send('true')}
-else
-{
-    res.send('false') 
-}
-}
-);
+
 app.post('/edit_user_password', async (req, res) => {
     console.log('yes');
     const { user_id, password } = req.body;
@@ -118,24 +128,7 @@ app.post('/edit_user_password', async (req, res) => {
       console.error('Error:', error);
       res.status(500).send('Internal Server Error');
     }
-  });
-  
-  
-app.get('/find_student_for_course_entry/:id',async(req,res)=>
-{  const variable=req.params.id
-    console.log(variable);
-    const result=await User_info.find({user_id:new RegExp('^S..'+variable+'.*$')},{user_id:1,_id:0});
-    if(result)
-    {
-        console.log(result)
-        res.send(result)
-    }
-    else
-    {
-        console.log('error')
-        res.status(500).send('No students')
-    }
-})
+  }); 
 app.get('/name/:id',async(req,res)=>
 {  const variable=req.params.id
     console.log(variable);
@@ -245,51 +238,6 @@ app.get('/find_students/:id', async (req, res) => {
       res.status(500).send('Error finding attendance data');
     }
   });
-  
-// app.get('/find_students/:id',async(req,res)=>
-// {
-//     const variable = req.params.id.substring(0, 2);
-//     const course_id1 = req.params.id;
-//     const result_fin=[]
-//     try {
-//       const result = await User_info.find({ user_id: new RegExp('^S..' + variable + '.*$') }, { user_id: 1, user_name: 1, _id: 0 });
-//       result.forEach((e) => {
-//         Course_info.findOne({ student_id: { $in: [e.user_id] }, course_id:course_id1 })
-//          .then((result)=>{
-//          if(result)
-//          {
-//              result_fin.push({
-//               "name":e.user_name,
-//               "rollno":e.user_id,
-//               "prentInCourse":"true"
-                
-//              })
-//          }
-//         else
-//       {
-//         result_fin.push({
-//           "name":e.user_name,
-//           "rollno":e.user_id,
-//           "prentInCourse":"false"})
-
-//       }
-//     })
-//   }
-//       )
-
-       
-//       if (result.length > 0) {
-//         res.send(result_fin);
-//       } else {
-//         console.log('No Students found');
-//         res.status(500).send('No faculty');
-//       }
-//     } catch (error) {
-//       console.log('Error:', error);
-//       res.status(500).send('Error finding faculty');
-//     }
-
-// });
 app.get('/find_course',async(req,res)=>
 {  
     const result=await Course_info.distinct('course_id');
@@ -303,21 +251,6 @@ app.get('/find_course',async(req,res)=>
         res.status(500).send('No students')
     }
 });
-// app.get('/find_faculty_for_course_entry/:id',async(req,res)=>
-// {  const variable=req.params.id.substring(0,2);
-//     console.log(variable);
-//     const result=await User_info.find({user_id:new RegExp('^F..'+variable+'.*$')},{user_id:1,user_name,_id:0});
-//     if(result)
-//     {
-//         console.log(result)
-//         res.send(result)
-//     }
-//     else
-//     {
-//         console.log('error')
-//         res.status(500).send('No faculty')
-//     }
-// })
 app.get('/find_faculty_for_course_entry/:id', async (req, res) => {
     const variable = req.params.id.substring(0, 2);
     
@@ -352,18 +285,7 @@ app.get('/attendance_for_course/:id',async(req,res)=>
         res.status(500).send('No students')
     }
 });
-app.get('/Admin',(req,res)=>{
-    console.log('Admin')
-res.sendFile('atMgmtAdmin.html',{root:__dirname})})
-app.get('/Faculty',(req,res)=>{
-  console.log('Admin')
-res.sendFile('atMgmtFaculty.html',{root:__dirname})})
-app.get('/Student',(req,res)=>{
-  console.log('Student')
-res.sendFile('/atMgmtStudent.html',{root:__dirname})})
-// app.get('/:id',(req,res)=>
-// {  const id=req.params.id
-//     res.send(id)});
+
 app.post('/attendance/:id',async(req,res)=>
 {try {
     const attendance=new Attendance_info(req.body)
@@ -375,47 +297,7 @@ app.post('/attendance/:id',async(req,res)=>
     console.log('Cannot catch')
 }
 });
-
-app.get('/:id/attendance_report/:course_id',async(req,res)=>
-{   
-    
-    const user_id_variable= req.params.id
-    const course_id_variable=req.params.course_id
-   if( /^S/.test(user_id_variable)) {const number_of_class=await Attendance_info.find({course_id:course_id_variable})
-    const arr_date_status=[]
-    let count_for_attendance=0
-if (number_of_class.length > 0) {
-    number_of_class.forEach((attendance) => {
-      if (attendance.attendance_slot) {
-        attendance.attendance_slot.forEach((records) => {
-          if(records.student_id == user_id_variable )
-            {   
-                if(records.status==true)
-                count_for_attendance++
-                const date_status={date:attendance.date,status:records.status}
-                arr_date_status.push(date_status)
-            }
-            
-        
-        });
-      }
-      
-    });
-  }
-  console.log(arr_date_status)
-  res.send(arr_date_status)
-  res.status(200).send(count_for_attendance.toString());}
-  else
-  {
-    let number_of_class
-    
-    number_of_class=await Attendance_info.find({course_id:course_id_variable},{date:1,attendance_slot:1,_id:0})
-  console.log(number_of_class)
-  res.send(number_of_class)}
-  }
-);
 app.get('/course_report/:id', async (req, res) => {
-  const arr_date_status = [];
   const user_id_variable = req.params.id;
 
   const number_of_courses = await Attendance_info.distinct(
@@ -440,29 +322,22 @@ console.log(number_of_courses)
     const attendance_percentage = (count_for_attendance / number_of_class.length)*100;
     arr_date_status.push({ courseName:course_name.course_name,courseID: course_id, attPercent: attendance_percentage });
   }
-
   console.log(arr_date_status);
   res.status(200).send(arr_date_status);
 });
-
 app.get('/attendance_report/:id', async (req, res) => {
-  const arr_date_status = [];
   const user_id_variable = req.params.id;
-
   const number_of_courses = await Attendance_info.distinct(
     'course_id',
     { 'attendance_slot.student_id': user_id_variable }
   );
-
   console.log(number_of_courses);
   let count = 1;
-
   for (const course_id of number_of_courses) {
     let slot = [];
     let status = [];
     const number_of_class = await Attendance_info.find({ course_id });
     let count_for_attendance = 0;
-
     for (const attendance of number_of_class) {
       for (const record of attendance.attendance_slot) {
         if (record.student_id == user_id_variable) {
@@ -477,45 +352,9 @@ app.get('/attendance_report/:id', async (req, res) => {
         }
       }
     }
-
     const course = await Course_info.findOne({ course_id: course_id }, { course_name: 1 });
     arr_date_status.push({ courseName: course.course_name.course_name, courseID: course_id, slot: slot, status: status });
   }
-
   console.log(arr_date_status);
   res.status(200).send(arr_date_status);
 });
-
-
-// app.get('/course_report/:id',async(req,res)=>
-// {    const arr_date_status=[]
-    
-//     const user_id_variable= req.params.id
-//     const number_of_courses = await Attendance_info.distinct(
-//       { 'attendance_slot.attendance_id': user_id_variable },
-//       { course_id: 1, course_name: 1 }
-//     ); 
-//     number_of_courses.forEach((course)=>
-//     {
-//     const number_of_class=await Attendance_info.find({course_id:course.course_id})
-//     let count_for_attendance=0
-//     number_of_class.forEach((attendance) => {
-//         attendance.attendance_slot.forEach((records) => {
-//           if(records.student_id == user_id_variable )
-//             {   if(records.status==true)
-//                 count_for_attendance++
-//             }
-            
-        
-//         });
-      
-      
-//     });
-//     const attendance_percentage=count_for_attendance/number_of_class;
-//     arr_date_status.push({courseName:course.course_name,courseId:course.course_id,attPercent:count_for_attendance})
-  
-//     })
-//     console.log(arr_date_status)
-//   res.send(arr_date_status)
-//   res.status(200).send(arr_date_status);
-    
