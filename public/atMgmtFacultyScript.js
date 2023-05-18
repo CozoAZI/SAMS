@@ -395,9 +395,6 @@ async function fetchData() {
 // const studentID = localStorage.getItem('user-ID');
 // document.getElementById('user-ID').textContent = studentID;
 
-const facultyID="F20CS001"; //Placeholder ID to be removed later
-
-let facultyName="June May"; 
 //Fetch Student name from back-end using studentID
 
 //ID for displaying the fetched rollno along with name below
